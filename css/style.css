@@ -1,3 +1,4 @@
+
 :root {
   --primary: #b6895b;
   --bg: #445565;
@@ -560,6 +561,46 @@ body {
   font-size: 2rem;
   color: #b6895b;
 }
+
+#cart-section {
+  margin-top: 50px;
+}
+
+#cart-items {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+#cart-total h3 {
+  font-weight: bold;
+  color: #ccc;
+}
+.cart-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.remove-button:hover {
+  background-color: #ff1a1a;
+}
+
+
 
 /* Footer */
 footer {
