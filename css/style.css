@@ -579,6 +579,7 @@ body {
   font-weight: bold;
   color: #ccc;
 }
+/* Styling untuk item di cart */
 .cart-item {
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
@@ -587,6 +588,22 @@ body {
   align-items: center;
 }
 
+/* Tombol tambah dan kurangi item */
+button {
+  background-color: #b6895b;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #694e33;
+}
+
+/* Tombol remove item */
 .remove-button {
   background-color: #ff4d4d;
   color: white;
@@ -600,7 +617,37 @@ body {
   background-color: #ff1a1a;
 }
 
+/* Styling for the cart item image */
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 5px;
+}
 
+/* Styling for the cart item container */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Styling for the remove button */
+.remove-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.remove-button:hover {
+  background-color: #ff1a1a;
+}
 
 /* Footer */
 footer {
