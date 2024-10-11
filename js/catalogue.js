@@ -1,12 +1,12 @@
 let allProducts = [];
+let itemsPerPage = 5; // Default to 5 items per page
 
 // Fetch products from API
 fetch('https://dummyjson.com/products')
   .then(response => response.json())
   .then(data => {
     allProducts = data.products;
-    // Initially display all products
-    displayFilteredProducts('all');
+    displayFilteredProducts(allProducts.slice(0, itemsPerPage)); // Initially display limited products
   })
   .catch(error => {
     console.error('Error fetching products:', error);
@@ -15,7 +15,7 @@ fetch('https://dummyjson.com/products')
 // Function to filter and display products based on category
 function filterProducts(category) {
   let filteredProducts = [];
-  
+
   if (category === 'cosmetics') {
     filteredProducts = allProducts.filter(product => product.category === 'skincare' || product.category === 'fragrances');
   } else if (category === 'furniture') {
@@ -23,14 +23,13 @@ function filterProducts(category) {
   } else if (category === 'groceries') {
     filteredProducts = allProducts.filter(product => product.category === 'groceries');
   } else {
-    // Show all products
     filteredProducts = allProducts;
   }
 
-  displayFilteredProducts(filteredProducts);
+  displayFilteredProducts(filteredProducts.slice(0, itemsPerPage)); // Show products based on selected number
 }
 
-// Function to display filtered products
+// Function to display products
 function displayFilteredProducts(products) {
   let productsHTML = '';
 
@@ -48,6 +47,15 @@ function displayFilteredProducts(products) {
   });
 
   document.getElementById('products-section').innerHTML = productsHTML;
+}
+
+// Function to update number of items per page
+function updateItemsPerPage() {
+  const selectedValue = document.getElementById('items-per-page').value;
+  itemsPerPage = parseInt(selectedValue, 10); // Convert the value to a number
+
+  // Refresh the displayed products based on current category and items per page
+  filterProducts('all');
 }
 
 // Add to Cart function (optional if you have a cart system)

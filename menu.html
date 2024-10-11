@@ -47,12 +47,22 @@
   </div>
 </section>
 
-<!-- Filter Buttons -->
+<!-- Filter Buttons and Items per Page -->
 <div class="category-buttons">
   <button onclick="filterProducts('all')" class="filter-btn">All</button>
   <button onclick="filterProducts('cosmetics')" class="filter-btn">Cosmetics</button>
   <button onclick="filterProducts('furniture')" class="filter-btn">Furniture</button>
   <button onclick="filterProducts('groceries')" class="filter-btn">Groceries</button>
+  
+  <!-- Items Per Page Dropdown -->
+  <div class="items-per-page">
+    <label for="items-per-page">Items per page:</label>
+    <select id="items-per-page" onchange="updateItemsPerPage()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
 </div>
 
 <!-- Products Section -->
@@ -61,7 +71,6 @@
     <!-- Products will be displayed here -->
   </div>
 </section>
-
 
   <section id="cart-section">
     <h2>Your Cart</h2>

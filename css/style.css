@@ -491,6 +491,23 @@ body {
   background-color: #4841b7;
 }
 
+/* Items Per Page Dropdown */
+.items-per-page {
+  margin-left: 20px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.items-per-page select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.items-per-page select:hover {
+  border-color: #6c63ff;
+}
+
 .menu-page_grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Membagi menjadi 4 kolom */
