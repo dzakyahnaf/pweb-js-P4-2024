@@ -469,54 +469,26 @@ body {
   color: white;
 }
 
-/* Menu Highlight */
-.menu-page_highlight {
+/* Filter Buttons Styling */
+.category-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: left;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 2rem; /* Jarak dengan grid di bawah */
-  height: 300px;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
-.menu-page_highlight-img {
-  width: 50%; /* Tetap biarkan lebar mengikuti container */
-  height: 300px; /* Tinggi tetap */
-  object-fit: cover; /* Gambar tetap proporsional */
-  border-top-left-radius: 10px; /* Border radius hanya di sisi kiri atas */
-  border-bottom-left-radius: 10px; /* Border radius hanya di sisi kiri bawah */
-  border-top-right-radius: 0px; /* Pastikan sisi kanan tidak ada border-radius */
-  border-bottom-right-radius: 0px;
+.filter-btn {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-
-.menu-page_highlight-info {
-  width: 45%; /* Lebarkan agar lebih dekat dengan gambar */
-  text-align: left;
-  padding-left: 10px; /* Kurangi jarak padding agar lebih mepet */
-}
-
-.menu-page_highlight-info h6 {
-  font-size: 2rem;
-  color: #b6895b;
-  margin-top: 60px;
-  margin-bottom: 1px;
-  text-align: left;
-}
-
-.menu-page_highlight-info h2 {
-  font-size: 3rem;
-  margin-bottom: 5px;
-  text-align: left;
-}
-
-.menu-page_highlight-info p {
-  font-size: 1.5rem;
-  text-align: left;
-  margin-left: 1px;
-  margin-top: -5px;
-  color: black;
+.filter-btn:hover {
+  background-color: #4841b7;
 }
 
 .menu-page_grid {

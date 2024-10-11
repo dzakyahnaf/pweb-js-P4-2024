@@ -1,27 +1,56 @@
-// Fetching the product data
+let allProducts = [];
+
+// Fetch products from API
 fetch('https://dummyjson.com/products')
   .then(response => response.json())
   .then(data => {
-    let productsHTML = '';
-    data.products.forEach(product => {
-      productsHTML += `
-        <div class="menu-page_item">
-          <img src="${product.thumbnail}" alt="${product.title}" class="menu-page_img" />
-          <div class="menu-page_info">
-            <h3>${product.title}</h3>
-            <p>${product.price}K</p>
-            <button onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.thumbnail}')">Add to Cart</button>
-          </div>
-        </div>
-      `;
-    });
-    document.querySelector('.menu-page_grid').innerHTML = productsHTML;
+    allProducts = data.products;
+    // Initially display all products
+    displayFilteredProducts('all');
   })
   .catch(error => {
     console.error('Error fetching products:', error);
   });
 
-// Add item to cart with image
+// Function to filter and display products based on category
+function filterProducts(category) {
+  let filteredProducts = [];
+  
+  if (category === 'cosmetics') {
+    filteredProducts = allProducts.filter(product => product.category === 'skincare' || product.category === 'fragrances');
+  } else if (category === 'furniture') {
+    filteredProducts = allProducts.filter(product => product.category === 'furniture');
+  } else if (category === 'groceries') {
+    filteredProducts = allProducts.filter(product => product.category === 'groceries');
+  } else {
+    // Show all products
+    filteredProducts = allProducts;
+  }
+
+  displayFilteredProducts(filteredProducts);
+}
+
+// Function to display filtered products
+function displayFilteredProducts(products) {
+  let productsHTML = '';
+
+  products.forEach(product => {
+    productsHTML += `
+      <div class="menu-page_item">
+        <img src="${product.thumbnail}" alt="${product.title}" class="menu-page_img" />
+        <div class="menu-page_info">
+          <h3>${product.title}</h3>
+          <p>${product.price}K</p>
+          <button onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.thumbnail}')">Add to Cart</button>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById('products-section').innerHTML = productsHTML;
+}
+
+// Add to Cart function (optional if you have a cart system)
 function addToCart(productId, productName, productPrice, productImage) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   const product = cart.find(item => item.id === productId);

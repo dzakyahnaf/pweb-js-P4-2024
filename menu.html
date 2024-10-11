@@ -27,15 +27,41 @@
   </nav>
   <!-- Navbar End -->
 
-  <!-- Menu Section -->
-  <section id="full-menu" class="menu-page">
-    <h2><span>Our Full</span> Menu</h2>
-    <p>Discover all our coffee options below.</p>
+ <!-- Menu Section -->
+<section class="menu-page">
+  <h2><span>Our Full</span> Menu</h2>
 
-    <div class="menu-page_grid">
+  <!-- Cosmetics Section -->
+  <div id="cosmetics-section" class="menu-page_grid">
+    <!-- Cosmetics products will be dynamically injected here -->
+  </div>
 
-    </div>
-  </section>
+  <!-- Furniture Section -->
+  <div id="furniture-section" class="menu-page_grid">
+    <!-- Furniture products will be dynamically injected here -->
+  </div>
+
+  <!-- Groceries Section -->
+  <div id="groceries-section" class="menu-page_grid">
+    <!-- Groceries products will be dynamically injected here -->
+  </div>
+</section>
+
+<!-- Filter Buttons -->
+<div class="category-buttons">
+  <button onclick="filterProducts('all')" class="filter-btn">All</button>
+  <button onclick="filterProducts('cosmetics')" class="filter-btn">Cosmetics</button>
+  <button onclick="filterProducts('furniture')" class="filter-btn">Furniture</button>
+  <button onclick="filterProducts('groceries')" class="filter-btn">Groceries</button>
+</div>
+
+<!-- Products Section -->
+<section class="menu-page">
+  <div id="products-section" class="menu-page_grid">
+    <!-- Products will be displayed here -->
+  </div>
+</section>
+
 
   <section id="cart-section">
     <h2>Your Cart</h2>
