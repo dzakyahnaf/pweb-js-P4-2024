@@ -1,4 +1,3 @@
-
 :root {
   --primary: #b6895b;
   --bg: #445565;
@@ -20,7 +19,6 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg);
   color: #fff;
-  min-height: 2000px;
   align-items: center;
 }
 
@@ -512,7 +510,6 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Membagi menjadi 4 kolom */
   gap: 2rem; /* Jarak antar item */
-  margin-top: 3rem;
 }
 
 .menu-page_item {
