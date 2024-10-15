@@ -447,14 +447,14 @@ body {
 
 /* Full Menu Page Section */
 .menu-page {
-  padding: 8rem 7% 1.4rem;
+  padding: 6rem 7% 2rem;
 }
 
 .menu-page h2 {
   text-align: center;
   font-size: 3rem;
   margin-bottom: 5px;
-  color: var(--primary);
+  color: #fff;
 }
 
 .menu-page p {
@@ -467,6 +467,10 @@ body {
   color: white;
 }
 
+.product-page {
+  padding: 2rem 7% 1.4rem;
+}
+
 /* Filter Buttons Styling */
 .category-buttons {
   display: flex;
@@ -475,7 +479,7 @@ body {
 }
 
 .filter-btn {
-  background-color: #6c63ff;
+  background-color: var(--primary);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -486,7 +490,7 @@ body {
 }
 
 .filter-btn:hover {
-  background-color: #4841b7;
+  background-color: #694e33;
 }
 
 /* Items Per Page Dropdown */

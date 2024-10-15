@@ -1,115 +1,119 @@
 \<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Page</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Page</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">kopi<span>turu</span>.</a>
 
-  <!-- Navbar Start -->
-  <nav class="navbar">
-    <a href="#" class="navbar-logo">kopi<span>turu</span>.</a>
+      <div class="navbar-nav">
+        <a href="index.html">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#menu">Menu</a>
+        <a href="#testimoni">Testimonial</a>
+      </div>
 
-    <div class="navbar-nav">
-      <a href="index.html">Home</a>
-      <a href="#about">About Us</a>
-      <a href="#menu">Menu</a>
-      <a href="#testimoni">Testimonial</a>
+      <div class="navbar-extra">
+        <a href="#" id="search"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Menu Section -->
+    <section class="menu-page">
+      <h2><span>Our Full</span> Menu</h2>
+
+      <!-- Cosmetics Section -->
+      <div id="cosmetics-section" class="menu-page_grid">
+        <!-- Cosmetics products will be dynamically injected here -->
+      </div>
+
+      <!-- Furniture Section -->
+      <div id="furniture-section" class="menu-page_grid">
+        <!-- Furniture products will be dynamically injected here -->
+      </div>
+
+      <!-- Groceries Section -->
+      <div id="groceries-section" class="menu-page_grid">
+        <!-- Groceries products will be dynamically injected here -->
+      </div>
+    </section>
+
+    <!-- Filter Buttons and Items per Page -->
+    <div class="category-buttons">
+      <button onclick="filterProducts('all')" class="filter-btn">All</button>
+      <button onclick="filterProducts('cosmetics')" class="filter-btn">
+        Cosmetics
+      </button>
+      <button onclick="filterProducts('furniture')" class="filter-btn">
+        Furniture
+      </button>
+      <button onclick="filterProducts('groceries')" class="filter-btn">
+        Groceries
+      </button>
+
+      <!-- Items Per Page Dropdown -->
+      <div class="items-per-page">
+        <label for="items-per-page">Items per page:</label>
+        <select id="items-per-page" onchange="updateItemsPerPage()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </div>
     </div>
 
-    <div class="navbar-extra">
-      <a href="#" id="search"><i data-feather="search"></i></a>
-      <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
-      <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-    </div>
-  </nav>
-  <!-- Navbar End -->
+    <!-- Products Section -->
+    <section class="product-page">
+      <div id="products-section" class="menu-page_grid">
+        <!-- Products will be displayed here -->
+      </div>
+    </section>
 
- <!-- Menu Section -->
-<section class="menu-page">
-  <h2><span>Our Full</span> Menu</h2>
+    <section id="cart-section">
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <div id="cart-total">
+        <h3>Total Items: <span id="total-items">0</span></h3>
+        <h3>Total: <span id="total-price">0</span></h3>
+      </div>
+    </section>
 
-  <!-- Cosmetics Section -->
-  <div id="cosmetics-section" class="menu-page_grid">
-    <!-- Cosmetics products will be dynamically injected here -->
-  </div>
+    <!-- Footer start -->
+    <footer>
+      <div class="socials">
+        <a href="#"><i data-feather="instagram"></i></a>
+        <a href="#"><i data-feather="twitter"></i></a>
+        <a href="#"><i data-feather="facebook"></i></a>
+      </div>
 
-  <!-- Furniture Section -->
-  <div id="furniture-section" class="menu-page_grid">
-    <!-- Furniture products will be dynamically injected here -->
-  </div>
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-  <!-- Groceries Section -->
-  <div id="groceries-section" class="menu-page_grid">
-    <!-- Groceries products will be dynamically injected here -->
-  </div>
-</section>
+      <div class="credit">
+        <p>Created by <span>Praktikan Pemweb P4.</span> | &copy; 2024.</p>
+      </div>
+    </footer>
+    <!-- Footer end -->
 
-<!-- Filter Buttons and Items per Page -->
-<div class="category-buttons">
-  <button onclick="filterProducts('all')" class="filter-btn">All</button>
-  <button onclick="filterProducts('cosmetics')" class="filter-btn">Cosmetics</button>
-  <button onclick="filterProducts('furniture')" class="filter-btn">Furniture</button>
-  <button onclick="filterProducts('groceries')" class="filter-btn">Groceries</button>
-  
-  <!-- Items Per Page Dropdown -->
-  <div class="items-per-page">
-    <label for="items-per-page">Items per page:</label>
-    <select id="items-per-page" onchange="updateItemsPerPage()">
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="20">20</option>
-    </select>
-  </div>
-</div>
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
 
-<!-- Products Section -->
-<section class="menu-page">
-  <div id="products-section" class="menu-page_grid">
-    <!-- Products will be displayed here -->
-  </div>
-</section>
-
-  <section id="cart-section">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <div id="cart-total">
-      <h3>Total Items: <span id="total-items">0</span></h3>
-      <h3>Total: <span id="total-price">0</span>K</h3>
-    </div>
-  </section>  
-  
-  <!-- Footer start -->
-  <footer>
-    <div class="socials">
-      <a href="#"><i data-feather="instagram"></i></a>
-      <a href="#"><i data-feather="twitter"></i></a>
-      <a href="#"><i data-feather="facebook"></i></a>
-    </div>
-
-    <div class="links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#menu">Menu</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <div class="credit">
-      <p>Created by <span>Praktikan Pemweb P4.</span> | &copy; 2024.</p>
-    </div>
-  </footer>
-  <!-- Footer end -->
-
-  <!-- Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-  <script>
-    feather.replace();
-  </script>
-
-  <!-- Javascript -->
-<script src="js/catalogue.js"></script>
-
-</body>
+    <!-- Javascript -->
+    <script src="js/catalogue.js"></script>
+  </body>
 </html>
