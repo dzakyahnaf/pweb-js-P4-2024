@@ -1,12 +1,13 @@
 let allProducts = [];
-let itemsPerPage = 5; // Default to 5 items per page
+let itemsPerPage; // Awalnya undefined agar bisa menampilkan semua item
 
 // Fetch products from API
 fetch('https://dummyjson.com/products')
   .then(response => response.json())
   .then(data => {
     allProducts = data.products;
-    displayFilteredProducts(allProducts.slice(0, itemsPerPage)); // Initially display limited products
+    itemsPerPage = allProducts.length; // Tampilkan semua item saat pertama kali halaman dibuka
+    displayFilteredProducts(allProducts.slice(0, itemsPerPage)); // Menampilkan semua item
   })
   .catch(error => {
     console.error('Error fetching products:', error);
@@ -26,7 +27,7 @@ function filterProducts(category) {
     filteredProducts = allProducts;
   }
 
-  displayFilteredProducts(filteredProducts.slice(0, itemsPerPage)); // Show products based on selected number
+  displayFilteredProducts(filteredProducts.slice(0, itemsPerPage)); // Menampilkan item berdasarkan jumlah yang dipilih
 }
 
 // Function to display products
@@ -52,7 +53,7 @@ function displayFilteredProducts(products) {
 // Function to update number of items per page
 function updateItemsPerPage() {
   const selectedValue = document.getElementById('items-per-page').value;
-  itemsPerPage = parseInt(selectedValue, 10); // Convert the value to a number
+  itemsPerPage = parseInt(selectedValue, 10); // Konversi pilihan menjadi angka
 
   // Refresh the displayed products based on current category and items per page
   filterProducts('all');
@@ -73,35 +74,37 @@ function addToCart(productId, productName, productPrice, productImage) {
   displayCartItems(); // Refresh cart display
 }
 
-// Fungsi untuk menampilkan isi cart
 function displayCartItems() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let cartItemsHTML = '';
-    let totalPrice = 0;
-    let totalItems = 0;  // Tambahkan variabel untuk menghitung total item
-  
-    cart.forEach(item => {
-      cartItemsHTML += `
-        <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}" class="cart-item-image" />
-          <p>${item.name} (x${item.quantity}) - ${item.price * item.quantity}K</p>
-          <button onclick="updateQuantity(${item.id}, 'decrease')">-</button>
-          ${item.quantity}
-          <button onclick="updateQuantity(${item.id}, 'increase')">+</button>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let cartItemsHTML = '';
+  let totalPrice = 0;
+  let totalItems = 0;
+
+  cart.forEach(item => {
+    // Menggunakan class berbeda untuk cart
+    cartItemsHTML += `
+      <div class="cart-page_item">
+        <img src="${item.image}" alt="${item.name}" class="cart-page_img" />
+        <div class="cart-page_info">
+          <h3>${item.name}</h3>
+          <p>${item.price * item.quantity}K</p>
+          <div class="cart-item-actions">
+            <button onclick="updateQuantity(${item.id}, 'decrease')">-</button>
+            <span>${item.quantity}</span>
+            <button onclick="updateQuantity(${item.id}, 'increase')">+</button>
+          </div>
           <button class="remove-button" onclick="removeFromCart(${item.id})">Remove</button>
         </div>
-      `;
-      totalPrice += item.price * item.quantity;
-      totalItems += item.quantity;  // Hitung total item
-    });
-  
-    // Tampilkan item di dalam cart
-    document.getElementById('cart-items').innerHTML = cartItemsHTML;
-    // Tampilkan total harga
-    document.getElementById('total-price').textContent = totalPrice + 'K';
-    // Tampilkan total item
-    document.getElementById('total-items').textContent = totalItems + ' items';  // Perbarui elemen untuk total item
-  }
+      </div>
+    `;
+    totalPrice += item.price * item.quantity;
+    totalItems += item.quantity;
+  });
+
+  document.getElementById('cart-items').innerHTML = cartItemsHTML;
+  document.getElementById('total-price').textContent = totalPrice + 'K';
+  document.getElementById('total-items').textContent = totalItems + ' items';
+}
   
   // Fungsi untuk mengubah jumlah item di cart
   function updateQuantity(productId, action) {
@@ -138,3 +141,21 @@ function removeFromCart(productId) {
   localStorage.setItem('cart', JSON.stringify(cart));
   displayCartItems(); // Refresh cart display
 }
+
+// Toggle cart sidebar
+const cartSidebar = document.getElementById('cart-sidebar');
+const cartToggle = document.getElementById('cart-toggle');
+const closeCartBtn = document.getElementById('close-cart');
+
+// Menggunakan logo keranjang di navbar untuk toggle sidebar
+const cartToggleNavbar = document.querySelector('#shopping-cart');
+
+cartToggleNavbar.addEventListener('click', () => {
+  cartSidebar.classList.toggle('open');
+});
+
+
+closeCartBtn.addEventListener('click', () => {
+  cartSidebar.classList.remove('open');
+});
+
